@@ -41,7 +41,7 @@ public class MessageListActivity extends BaseTitleNormalActivity implements Mess
     BaseRecyclerAdapter<Mqtthistorylist> mMessageListAdapter;
     MessageListContract.Presenter mPresenter;
 
-    String mZpfaId = "";
+    String mTopic;
 
     @Override
     protected int getChildContentViewId() {
@@ -76,8 +76,8 @@ public class MessageListActivity extends BaseTitleNormalActivity implements Mess
         mMessageListView.setLayoutManager(getLayoutManager(LinearLayoutManager.VERTICAL));
 
         Intent intent = getIntent();
-        mZpfaId = intent.getStringExtra("ZpfaID");
-        XLog.d(true, 5, "mZpfaId: " + mZpfaId);
+        mTopic = intent.getStringExtra("Topic");
+        XLog.d(true, 5, "mTopic: " + mTopic);
 
         setTitle("消息管理");
         setIconBack(R.mipmap.btn_back_normal);
@@ -86,15 +86,7 @@ public class MessageListActivity extends BaseTitleNormalActivity implements Mess
     @Override
     public void onGetCommonInfo(List<Mqtthistorylist> list) {
         refreshComplete();
-
-        /*
-        * 数据太少，复制三份
-        * */
-        List<Mqtthistorylist> temp = new ArrayList<>();
-        temp.addAll(list);
-        temp.addAll(list);
-        temp.addAll(list);
-        mMessageListAdapter.resetItem(temp);
+        mMessageListAdapter.resetItem(list);
     }
 
     @Override
@@ -130,7 +122,7 @@ public class MessageListActivity extends BaseTitleNormalActivity implements Mess
     @Override
     protected void refreshData() {
         super.refreshData();
-        mPresenter.getCommonInfo(mZpfaId);
+        mPresenter.getCommonInfoByTopic(mTopic);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.rl_my_common_info) {
             Intent intent = new Intent();
-            intent.putExtra("ZpfaID", "00000000001");
+            intent.putExtra("Topic", "GCFA_TOPIC1");
             intent.setClass(getActivity(), MessageListActivity.class);
             startActivity(intent);
         }

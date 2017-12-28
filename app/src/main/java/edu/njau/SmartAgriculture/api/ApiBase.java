@@ -71,4 +71,8 @@ public class ApiBase {
     protected static final void getMonthPeriod(RequestParams params, String value) {
         params.put("MonthPeriod", value);
     }
+
+    protected static final void getTopic(RequestParams params, String value) {
+        params.put("Topic", value);
+    }
 }

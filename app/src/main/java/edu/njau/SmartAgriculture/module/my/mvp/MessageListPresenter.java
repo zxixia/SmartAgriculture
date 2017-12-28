@@ -21,8 +21,8 @@ public class MessageListPresenter implements MessageListContract.Presenter {
     }
 
     @Override
-    public void getCommonInfo(String zpfa) {
-        MyApi.getCommontInfo(zpfa, new TextHttpResponseHandler() {
+    public void getCommonInfoByTopic(String topic) {
+        MyApi.getCommonInfoByTopic(topic, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 XLog.d(true, 5, responseString);

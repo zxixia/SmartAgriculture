@@ -13,6 +13,7 @@ import net.jiawa.debughelper.XLog;
 public class MyApi extends ApiBase {
     private static AsyncHttpClient mClient = new AsyncHttpClient();
     private static final String FindMqttHistoryByZpfaID = "findMqttHistoryByZpfaID.do";
+    private static final String FindMqttHistoryByTopic = "findMqttHistoryByTopic.do";
 
     /**
      * http://47.93.227.232:8086/zhny/app/findMqttHistoryByZpfaID.do?ZpfaID=00000000001
@@ -25,6 +26,22 @@ public class MyApi extends ApiBase {
             XLog.d(true, 5, getStr);
             RequestParams params = new RequestParams();
             getZpfaID(params, zpfa);
+            mClient.get(getStr, params, handler);
+        } catch (Exception e){
+            XLog.d(true, 5, e.toString());
+        }
+    }
+
+    /**
+     * http://47.93.227.232:8086//zhny/app/findMqttHistoryByTopic.do?Topic=GCFA_TOPIC1
+     * @param handler
+     */
+    public static void getCommonInfoByTopic(String topic, TextHttpResponseHandler handler) {
+        try {
+            final String getStr = getApi(FindMqttHistoryByTopic);
+            XLog.d(true, 5, getStr);
+            RequestParams params = new RequestParams();
+            getTopic(params, topic);
             mClient.get(getStr, params, handler);
         } catch (Exception e){
             XLog.d(true, 5, e.toString());

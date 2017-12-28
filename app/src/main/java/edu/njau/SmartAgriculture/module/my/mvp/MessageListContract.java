@@ -12,7 +12,7 @@ import edu.njau.SmartAgriculture.bean.my.commoninfo.Mqtthistorylist;
 
 public class MessageListContract {
     public interface Presenter extends BasePresenter {
-        void getCommonInfo(String zpfa);
+        void getCommonInfoByTopic(String topic);
     }
 
     public interface View extends BaseView<Presenter> {
