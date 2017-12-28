@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.njau.SmartAgriculture">
+
+    <!--该权限group,用于访问网络，或者基于网络的lbs定位服务,以及微信,微博,QQ分享和登陆功能，判断或改变网络状态等功能-->
+    <!--<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
+
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <!--用于写入缓存数据到扩展存储卡-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/App.Theme.Light">
+        <activity
+            android:name="edu.njau.SmartAgriculture.module.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="edu.njau.SmartAgriculture.module.git.projectdetail.ProjectDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="edu.njau.SmartAgriculture.module.git.codedetail.CodeDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="edu.njau.SmartAgriculture.module.douban.theater.TheaterActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="edu.njau.SmartAgriculture.module.douban.movie.MovieActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name="edu.njau.SmartAgriculture.test.TestPullNestedViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name=".module.search.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name=".module.gcfa.CommonInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name=".module.gcfa.VarietyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name=".module.gcfa.PeriodActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name=".module.gcfa.FarmingOprationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name=".module.gcfa.PestControlActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
+        <activity android:name=".module.my.MessageListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen"></activity>
+        <service android:name="com.amap.api.location.APSService"></service>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="3933b222ae423663a8065f0c05b9ae62"></meta-data>
+    </application>
+
+</manifest>

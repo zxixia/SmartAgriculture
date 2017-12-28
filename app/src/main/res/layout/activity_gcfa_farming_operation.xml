@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dra_rounded_corner_bottom"
+    android:padding="5dp">
+    <!--
+    type 类型
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间："
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@color/jiawa_main"/>
+        <Spinner
+            android:id="@+id/sp_gcfa_fo_time"
+            android:layout_width="105dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="15dp"
+            android:dropDownVerticalOffset="28dp"
+            android:dropDownHorizontalOffset="20dp"
+            android:spinnerMode="dropdown"
+            android:layout_gravity="center_vertical"
+            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+            <RadioButton
+                android:id="@+id/rb_gcfa_fo_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="上旬"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/rb_gcfa_fo_middle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="中旬"/>
+            <RadioButton
+                android:id="@+id/rb_gcfa_fo_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="下旬"/>
+        </RadioGroup>
+    </LinearLayout><!-- type -->
+
+    <View style="@style/sty_horizontal_line"/>
+
+    <!-- 主茎叶龄期 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="主茎叶龄期："
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_gcfa_period_leaf_age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="16sp"
+            android:layout_weight="5"/>
+    </LinearLayout>
+    <!-- 茎蘖生长动态 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="茎蘖消长动态："
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_gcfa_period_stem_growth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="成熟期亩穗数23-25万"
+            android:textSize="16sp"
+            android:layout_weight="5"/>
+    </LinearLayout>
+
+    <View style="@style/sty_horizontal_line"/>
+
+    <!-- 农事操作 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="农事操作："
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_gcfa_period_farming_operation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="灌溉"
+            android:textSize="16sp"
+            android:layout_weight="5"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_gcfa_period_farming_operation_description"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16sp"/>
+
+    <View style="@style/sty_horizontal_line"/>
+    <!-- 病虫草防治 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="病虫草防治："
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_gcfa_period_pest_control"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:layout_weight="5"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_gcfa_period_pest_control_description"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16sp"/>
+</LinearLayout> <!-- 最底部的动态区域 -->

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">智慧农业</string>
+
+    <string name="state_network_error">网络错误</string>
+    <string name="state_loading">正在加载…</string>
+    <string name="state_not_more">没有更多数据</string>
+    <string name="state_load_error">加载失败</string>
+    <string name="state_refreshing">正在刷新</string>
+    <string name="state_loading_error">数据加载中&#8230;</string>
+    <string name="state_submit">正在提交中&#8230;</string>
+
+    <string name="main_tab_title">主页</string>
+    <string name="main_index_title">智慧农业</string>
+    <string name="gcfn_index_title">高产方案</string>
+    <string name="kstw_index_title">快速提问</string>
+    <string name="my_index_title">订阅管理</string>
+
+    <string name="need_lbs_permission_hint">需要定位权限</string>
+</resources>
