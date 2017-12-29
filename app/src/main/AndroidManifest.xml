@@ -96,6 +96,18 @@
             android:theme="@style/App.Theme.FullScreen"></activity>
         <service android:name="com.amap.api.location.APSService"></service>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="b6c46c86ac63f5dfa3db09494fc3d8ca"></meta-data>
+
+        <!-- Mqtt Service -->
+        <service android:name="org.eclipse.paho.android.service.MqttService" >
+        </service>
+        <!-- MyService -->
+        <service android:name="edu.njau.SmartAgriculture.service.MessageReceiveService">
+        </service>
+        <receiver android:name="edu.njau.SmartAgriculture.broadcast.NotificationReceiver" >
+        </receiver>
+        <receiver android:name="edu.njau.SmartAgriculture.broadcast.ShowNotificationReceiver" >
+        </receiver>
+
     </application>
 
 </manifest>

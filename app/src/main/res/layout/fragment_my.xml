@@ -109,6 +109,7 @@
         <android.support.v7.widget.SwitchCompat
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:id="@+id/sc_zpfa_sub"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"/>
     </RelativeLayout><!--栽培方案-->
