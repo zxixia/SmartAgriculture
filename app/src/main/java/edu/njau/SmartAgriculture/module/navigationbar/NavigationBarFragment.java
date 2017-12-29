@@ -66,10 +66,10 @@ public class NavigationBarFragment extends BaseFragment implements View.OnClickL
                 MainTabFragment.class);
         //mItemKSTW.setFragment(MainTabFragment.newInstance());
         mItemSCFW.init(R.drawable.tab_icon_scfw, // 生产服务
-                MainTabFragment.class);
+                MyFragment.class);
         //mItemSCFW.setFragment(MainTabFragment.newInstance());
         mItemME.init(R.drawable.tab_icon_me, // 我的
-                MyFragment.class);
+                MainTabFragment.class);
     }
 
     public void setup(Context context, FragmentManager manager, OnItemSelectListener l) {

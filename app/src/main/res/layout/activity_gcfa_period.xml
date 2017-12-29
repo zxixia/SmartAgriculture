@@ -38,7 +38,27 @@
                 android:spinnerMode="dropdown"
                 />
         </LinearLayout>
-
+        <!-- 主茎叶龄期 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="时间："
+                android:textSize="16sp"
+                android:layout_weight="3"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_gcfa_period_month_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textSize="16sp"
+                android:layout_weight="5"/>
+        </LinearLayout>
         <!-- 主茎叶龄期 -->
         <LinearLayout
             android:layout_width="match_parent"

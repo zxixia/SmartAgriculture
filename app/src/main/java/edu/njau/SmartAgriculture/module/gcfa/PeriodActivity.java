@@ -42,6 +42,10 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
     TextView mPestControl;
     @Bind(R.id.tv_gcfa_period_pest_control_description)
     TextView mPestControlDescription;
+    //时间
+    @Bind(R.id.tv_gcfa_period_month_time)
+    TextView mPeriodMonthTime;
+
 
     @Override
     protected int getSubViewId() {
@@ -79,14 +83,162 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
         // stop the swipe
         refreshComplete();
         try {
-            if (allInfo.getResponse().getHighplantlist().size() > 0) {
-                mFarmingOperation.setText(allInfo.getResponse().getHighplantlist().get(0).getFarmingoperation().getFarmingoperationname());
-                mFarmingOperationDescription.setText(allInfo.getResponse().getHighplantlist().get(0).getFarmingoperation().getFarmingoperationcontent());
-                mPestControl.setText(allInfo.getResponse().getHighplantlist().get(0).getPestcontrol().getDescription());
-                mPestControlDescription.setText(allInfo.getResponse().getHighplantlist().get(0).getPestcontrol().getPestcontrolcontent());
 
-                mLeafAge.setText(allInfo.getResponse().getHighplantlist().get(0).getLeafage());
-                mStemGrowth.setText(allInfo.getResponse().getHighplantlist().get(0).getStemgrowth());
+            if (allInfo.getResponse().getHighplantlist().size() > 0) {
+
+                String mFarmingOperation_Str = "";
+                String mFarmingOperationDescription_Str = "";
+                String mPestControl_Str = "";
+                String mPestControlDescription_Str = "";
+                String mLeafAge_Str = "";
+                String mStemGrowth_Str = "";
+                String mPeriodMonthTime_Str = "";
+
+                List<String> mFarmingOperation_List = new ArrayList<String>();
+                List<String> mFarmingOperationDescription_List = new ArrayList<String>();
+                List<String> mPestControl_List = new ArrayList<String>();
+                List<String> mPestControlDescription_List = new ArrayList<String>();
+                List<String> mLeafAge_List = new ArrayList<String>();
+                List<String> mStemGrowth_List = new ArrayList<String>();
+                List<String> mPeriodMonthTime_List = new ArrayList<String>();
+
+                for(int i=0;i<allInfo.getResponse().getHighplantlist().size();i++){
+
+                    String mFarmingOperation_Txt =
+                            allInfo.getResponse().getHighplantlist().
+                            get(i).getFarmingoperation()
+                            .getFarmingoperationname();
+                    String mFarmingOperationDescription_Txt =
+                            allInfo.getResponse().getHighplantlist()
+                            .get(i).getFarmingoperation()
+                            .getFarmingoperationcontent();
+                    String mPestControl_Txt =
+                            allInfo.getResponse().getHighplantlist()
+                            .get(i).getPestcontrol()
+                            .getDescription();
+                    String mPestControlDescription_Txt =
+                            allInfo.getResponse().getHighplantlist()
+                            .get(i).getPestcontrol()
+                            .getPestcontrolcontent();
+                    String mLeafAge_Txt =
+                            allInfo.getResponse().getHighplantlist()
+                            .get(i)
+                            .getLeafage();
+                    String mStemGrowth_Txt =
+                            allInfo.getResponse().getHighplantlist()
+                            .get(i).getStemgrowth();
+                    String mPeriodMonthTime_Txt =
+                            allInfo.getResponse().getHighplantlist()
+                            .get(i).getCropmonth()
+                            +allInfo.getResponse().getHighplantlist()
+                            .get(i).getMonthperiod();
+
+                    if(!mFarmingOperation_List.contains(mFarmingOperation_Txt)){
+                        mFarmingOperation_List.add(mFarmingOperation_Txt);
+                    }
+
+                    if(!mFarmingOperationDescription_List.contains(mFarmingOperationDescription_Txt)){
+                        mFarmingOperationDescription_List.add(mFarmingOperationDescription_Txt);
+                    }
+
+                    if(!mPestControl_List.contains(mPestControl_Txt)){
+                        mPestControl_List.add(mPestControl_Txt);
+                    }
+
+                    if(!mPestControlDescription_List.contains(mPestControlDescription_Txt)){
+                        mPestControlDescription_List.add(mPestControlDescription_Txt);
+                    }
+
+                    if(!mLeafAge_List.contains(mLeafAge_Txt)){
+                        mLeafAge_List.add(mLeafAge_Txt);
+                    }
+
+                    if(!mStemGrowth_List.contains(mStemGrowth_Txt)){
+                        mStemGrowth_List.add(mStemGrowth_Txt);
+                    }
+
+                    if(!mPeriodMonthTime_List.contains(mPeriodMonthTime_Txt)){
+                        mPeriodMonthTime_List.add(mPeriodMonthTime_Txt);
+                    }
+
+
+//                    mFarmingOperation_Txt = mFarmingOperation_Txt
+//                            +allInfo.getResponse().getHighplantlist().
+//                            get(i).getFarmingoperation()
+//                            .getFarmingoperationname();
+//                    mFarmingOperationDescription_Txt = mFarmingOperationDescription_Txt
+//                            +allInfo.getResponse().getHighplantlist()
+//                            .get(i).getFarmingoperation()
+//                            .getFarmingoperationcontent();
+//                    mPestControl_Txt = mPestControl_Txt
+//                            +allInfo.getResponse().getHighplantlist()
+//                            .get(i).getPestcontrol()
+//                            .getDescription();
+//                    mPestControlDescription_Txt = mPestControlDescription_Txt
+//                            +allInfo.getResponse().getHighplantlist()
+//                            .get(i).getPestcontrol()
+//                            .getPestcontrolcontent();
+//                    mLeafAge_Txt = mLeafAge_Txt
+//                            +allInfo.getResponse().getHighplantlist()
+//                            .get(i)
+//                            .getLeafage()+"  ";
+//                    mStemGrowth_Txt = mStemGrowth_Txt
+//                            +allInfo.getResponse().getHighplantlist()
+//                            .get(i).getStemgrowth()+"  ";
+//                    mPeriodMonthTime_Txt = mPeriodMonthTime_Txt
+//                            +allInfo.getResponse().getHighplantlist()
+//                            .get(i).getCropmonth()
+//                            +allInfo.getResponse().getHighplantlist()
+//                            .get(i).getMonthperiod()+"  ";
+
+                }
+
+                for(int i=0;i<mFarmingOperation_List.size();i++){
+                    mFarmingOperation_Str = mFarmingOperation_Str
+                            +mFarmingOperation_List.get(i)+"  ";
+                }
+
+                for(int i=0;i<mFarmingOperationDescription_List.size();i++){
+                    mFarmingOperationDescription_Str = mFarmingOperationDescription_Str
+                            +mFarmingOperationDescription_List.get(i)+"  ";
+                }
+
+                for(int i=0;i<mPestControl_List.size();i++){
+                    mPestControl_Str = mPestControl_Str
+                            +mPestControl_List.get(i)+"  ";
+                }
+
+                for(int i=0;i<mPestControlDescription_List.size();i++){
+                    mPestControlDescription_Str = mPestControlDescription_Str
+                            +mPestControlDescription_List.get(i)+"  ";
+                }
+
+                for(int i=0;i<mLeafAge_List.size();i++){
+                    mLeafAge_Str = mLeafAge_Str
+                            +mLeafAge_List.get(i)+"  ";
+                }
+
+                for(int i=0;i<mStemGrowth_List.size();i++){
+                    mStemGrowth_Str = mStemGrowth_Str
+                            +mStemGrowth_List.get(i)+"  ";
+                }
+
+                for(int i=0;i<mPeriodMonthTime_List.size();i++){
+                    mPeriodMonthTime_Str = mPeriodMonthTime_Str
+                            +mPeriodMonthTime_List.get(i)+"  ";
+                }
+
+
+
+                mFarmingOperation.setText(mFarmingOperation_Str);
+                mFarmingOperationDescription.setText(mFarmingOperationDescription_Str);
+                mPestControl.setText(mPestControl_Str);
+                mPestControlDescription.setText(mPestControlDescription_Str);
+
+                mLeafAge.setText(mLeafAge_Str);
+                mStemGrowth.setText(mStemGrowth_Str);
+                mPeriodMonthTime.setText(mPeriodMonthTime_Str);
+
             } else {
                 mPestControl.setText("无数据");
                 mPestControlDescription.setText("无数据");
@@ -94,6 +246,7 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
                 mFarmingOperationDescription.setText("无数据");
                 mLeafAge.setText("无数据");
                 mStemGrowth.setText("无数据");
+                mPeriodMonthTime.setText("无数据");
             }
         } catch (Exception e) {}
     }

@@ -18,7 +18,7 @@
     <edu.njau.SmartAgriculture.widgets.NavigationButton
         android:id="@+id/tv_navigationbar_item_scfw"
         style="@style/sty_navigationbar_items"
-        android:text="生产服务"/>
+        android:text="订阅服务"/>
     <edu.njau.SmartAgriculture.widgets.NavigationButton
         android:id="@+id/tv_navigationbar_item_me"
         style="@style/sty_navigationbar_items"

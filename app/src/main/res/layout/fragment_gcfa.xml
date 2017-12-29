@@ -85,7 +85,7 @@
                     android:id="@+id/tv_dangqiandiqu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="栽种方式："
+                    android:text="栽培方案："
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <Spinner

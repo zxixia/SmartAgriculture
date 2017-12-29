@@ -24,9 +24,9 @@
             android:textColor="@color/jiawa_main"/>
         <Spinner
             android:id="@+id/sp_gcfa_fo_time"
-            android:layout_width="105dp"
+            android:layout_width="85dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="0dp"
             android:dropDownVerticalOffset="28dp"
             android:dropDownHorizontalOffset="20dp"
             android:spinnerMode="dropdown"
@@ -61,6 +61,50 @@
 
     <View style="@style/sty_horizontal_line"/>
 
+    <!-- 时间 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="时间："
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_gcfa_op_month_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:layout_weight="5"/>
+    </LinearLayout>
+    <!-- 物候期 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="生育期："
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_gcfa_op_cropperiod"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:layout_weight="5"/>
+    </LinearLayout>
     <!-- 主茎叶龄期 -->
     <LinearLayout
         android:layout_width="match_parent"

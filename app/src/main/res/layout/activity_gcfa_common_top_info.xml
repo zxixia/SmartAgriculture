@@ -8,9 +8,8 @@
     android:paddingBottom="5dp"
     android:paddingLeft="7dp"
     android:paddingRight="7dp">
-    <!--
-        顶部公共的适宜品种
-    -->
+
+    <!--位置-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,20 +19,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="适宜品种"
+            android:text="当前位置"
             android:textStyle="bold"
             android:textSize="16sp"/>
         <TextView
             android:layout_marginTop="5dp"
-            android:id="@+id/tv_gcfa_suitable_crop"
+            android:id="@+id/tv_gcfa_current_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="水稻 中稻1号"
+            android:text="南京市玄武区"
             android:textSize="16sp"/>
     </LinearLayout>
+
     <!--
-    中间公共的部分
-    -->
+       中间公共的部分
+       -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,10 +48,31 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/tv_middle_current_month_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="当前月份："
+                android:textSize="16sp"
+                android:layout_weight="3"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_middle_current_month_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="五月下旬"
+                android:textSize="16sp"
+                android:layout_weight="5"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
                 android:id="@+id/tv_middle_current_type_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="当前生育期："
+                android:text="当前物侯期："
                 android:textSize="16sp"
                 android:layout_weight="3"
                 android:textStyle="bold"/>
@@ -71,7 +92,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="主茎叶龄期："
+                android:text="当前主茎叶龄："
                 android:textSize="16sp"
                 android:layout_weight="3"
                 android:textStyle="bold"/>
@@ -105,6 +126,48 @@
                 android:layout_weight="5"/>
         </LinearLayout>
     </LinearLayout><!-- 中间公共部分 -->
+
+    <!--方案及品质-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@drawable/dra_rounded_corner_top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下里河地区高产方案"
+            android:id="@+id/tv_gcfa_current_zpfa_name"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!--
+        顶部公共的适宜品种
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="@drawable/dra_rounded_corner_top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="适宜品种及目标产量"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_gcfa_suitable_crop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="水稻 中稻1号"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
 
     <ViewStub
         android:id="@+id/lay_content"

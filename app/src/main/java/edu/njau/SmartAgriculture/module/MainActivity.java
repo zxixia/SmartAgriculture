@@ -69,7 +69,7 @@ public class MainActivity extends BaseTitleNormalActivity implements View.OnClic
     @Override
     protected void initData() {
         super.initData();
-        setTitle("智慧农业");
+        setTitle("农技宝");
         setIcon(R.mipmap.actionbar_search_icon);
     }
 

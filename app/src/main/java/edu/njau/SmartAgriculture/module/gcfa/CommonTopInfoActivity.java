@@ -35,9 +35,25 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
     @Bind(R.id.tv_gcfa_suitable_crop)
     TextView mSuitableCrop;
 
+    /**
+     * update 2017-12-29
+     */
+    //位置
+    @Bind(R.id.tv_gcfa_current_location)
+    TextView mLocation;
+    //当前月份
+    @Bind(R.id.tv_middle_current_month_value)
+    TextView mMonthValue;
+    //栽培方案名称
+    @Bind(R.id.tv_gcfa_current_zpfa_name)
+    TextView mZPFAName;
+
+
+
     private String mCropId;
     private String mZpfaId;
     private String mAreaId;
+    private String mBLocation;
     private String mPageTitle;
 
     @Override
@@ -57,9 +73,11 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
 
     @Override
     public void onGetCommonTopInfoFromMonthAndMonthPeriod(AllInfo allInfo) {
+        mMonthValue.setText(getCurrentMonth()+getCurrentMonthPeriod());
         if (allInfo.getResponse().getHighplantlist().size() > 0) {
             mLeafAge.setText(allInfo.getResponse().getHighplantlist().get(0).getLeafage());
             mStemGrowth.setText(allInfo.getResponse().getHighplantlist().get(0).getStemgrowth());
+
         } else {
             mLeafAge.setText(getCurrentMonth() + ", 无数据");
             mStemGrowth.setText(getCurrentMonthPeriod() + ", 无数据");
@@ -75,7 +93,10 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
         mAreaId = intent.getStringExtra("AreaID");
         mCropId = intent.getStringExtra("CropID");
         mZpfaId = intent.getStringExtra("ZpfaID");
+        mBLocation = intent.getStringExtra("BLocation");
         mPageTitle = intent.getStringExtra("TYPE");
+
+
     }
 
     @Override
@@ -175,7 +196,7 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
     protected void initData() {
         super.initData();
         setTitle(getPageTitle());
-        mCurrentTypeName.setText(getCurrentTypeName() + ":");
+//        mCurrentTypeName.setText(getCurrentTypeName() + ":");
     }
 
     protected void setCurrentTypeValue(String v) {
@@ -185,7 +206,8 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
     @Override
     public void onGetSuitableCrop(Variety variety) {
         try {
-            mSuitableCrop.setText(variety.getResponse().getSuitablecrop());
+            mLocation.setText(mBLocation);
+            mSuitableCrop.setText(variety.getResponse().getVarietyyield());
         } catch (Exception e) {}
     }
 }

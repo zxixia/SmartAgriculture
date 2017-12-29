@@ -43,6 +43,8 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
     private String mCropId;
     private String mZpfaId;
     private String mAreaId = "0000000001";
+    private String mLocation ;
+    private String mGZFAName ;
 
     @Bind(R.id.tv_gcfa_district)
     TextView mDistrict;
@@ -94,7 +96,10 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
         AMapHelper.newInstance(getActivity().getApplicationContext()).addLocationListener(new AMapHelper.LocationListener() {
             @Override
             public void onGetLocation(AMapLocation aMapLocation) {
-                mDistrict.setText(aMapLocation.getDistrict());
+//                mDistrict.setText(aMapLocation.getDistrict());
+                mLocation = aMapLocation.getProvince()+aMapLocation.getCity();
+                mDistrict.setText(aMapLocation.getProvince()+"  "
+                                  +aMapLocation.getCity());
             }
         });
     }
@@ -160,6 +165,8 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
         }
         plantTypes.add(new Info("方案1", "00000000001"));
         plantTypes.add(new Info("方案2", "00000000002"));
+        plantTypes.add(new Info("方案3", "00000000003"));
+        plantTypes.add(new Info("方案4", "00000000004"));
         // 因为SpinnerAdapter内部保存的是和plantTypes
         // 一样的对象,所以要修改SpinnerAdapter中的数据
         // 只要修改plantTypes即可
@@ -187,6 +194,7 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
         intent.putExtra("ZpfaID", mZpfaId);
         intent.putExtra("AreaID", mAreaId);
         intent.putExtra("CropID", mCropId);
+        intent.putExtra("BLocation", mLocation);
 
         if (type.equals("模式图")) {
             intent.setClass(getActivity(), PatternActivity.class);
