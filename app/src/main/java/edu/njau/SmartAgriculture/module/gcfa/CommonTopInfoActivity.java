@@ -55,6 +55,7 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
     private String mAreaId;
     private String mBLocation;
     private String mPageTitle;
+    private String mGZFAName;
 
     @Override
     protected int getChildContentViewId() {
@@ -95,6 +96,7 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
         mZpfaId = intent.getStringExtra("ZpfaID");
         mBLocation = intent.getStringExtra("BLocation");
         mPageTitle = intent.getStringExtra("TYPE");
+        mGZFAName = intent.getStringExtra("mGZFAName");
 
 
     }
@@ -206,6 +208,7 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
     @Override
     public void onGetSuitableCrop(Variety variety) {
         try {
+            mZPFAName.setText(""+mGZFAName);
             mLocation.setText(mBLocation);
             mSuitableCrop.setText(variety.getResponse().getVarietyyield());
         } catch (Exception e) {}
