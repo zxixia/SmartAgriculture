@@ -3,12 +3,16 @@ package edu.njau.SmartAgriculture.module.gcfa;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
+import com.google.gson.Gson;
+import com.loopj.android.http.TextHttpResponseHandler;
 
 import net.jiawa.debughelper.XLog;
 
@@ -16,9 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import cz.msebera.android.httpclient.Header;
 import edu.njau.SmartAgriculture.R;
+import edu.njau.SmartAgriculture.api.GCFAApi;
 import edu.njau.SmartAgriculture.base.adapter.BaseRecyclerAdapter;
 import edu.njau.SmartAgriculture.base.adapter.BaseSpinnerAdapter;
+import edu.njau.SmartAgriculture.bean.gcfa.allinfo.AllInfo;
+import edu.njau.SmartAgriculture.bean.gcfa.zpfa.Zpfa;
 import edu.njau.SmartAgriculture.module.amap.AMapHelper;
 import edu.njau.SmartAgriculture.module.SARecyclerFragment;
 import edu.njau.SmartAgriculture.module.gcfa.mvp.GCFAContract;
@@ -78,11 +86,62 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
             mPlantTypeAdapter = new BaseSpinnerAdapter(getContext(), plantTypes);
         }
         mSpinnerPlantType.setAdapter(mPlantTypeAdapter);
+        mSpinnerPlantType.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (null == mPlantTypeAdapter) {
+                    mPlantTypeAdapter = new BaseSpinnerAdapter(getContext(), plantTypes);
+                }
+                if(mAreaId==null || "".equals(mAreaId)){
+                    return false;
+                }
+                if(mCropId==null || "".equals(mCropId)){
+                    return false;
+                }
+
+                GCFAApi.getZpfaList(mAreaId,mCropId,new TextHttpResponseHandler(){
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, String responseString) {
+
+
+                        plantTypes.clear();
+                        Log.e("resp:",""+responseString);
+                        Zpfa zpfaList = new Gson().fromJson(responseString, Zpfa.class);
+
+                        for(int i=0;i<zpfaList.getResponse().getZpfaList().size();i++){
+
+                            String ZPFAName = zpfaList.getResponse()
+                                    .getZpfaList().get(i).getZpfaName();
+
+                            if(ZPFAName!=null && !"".equals(ZPFAName)){
+                                plantTypes.add(new Info(ZPFAName.substring(0,ZPFAName.length()-17)
+                                        , zpfaList.getResponse()
+                                        .getZpfaList().get(i).getZpfaID()));
+                            }
+
+                        }
+                        mPlantTypeAdapter.notifyDataSetChanged();
+                    }
+                });
+
+
+                return false;
+            }
+        });
+
         mSpinnerPlantType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mZpfaId = ((Info)mPlantTypeAdapter.getItem(position)).id;
                 XLog.d(true, 5, "zpfa: " + mZpfaId);
+                mGZFAName = ((Info) mPlantTypeAdapter.getItem(position)).name;
                 mPlantTypeAdapter.setSelectIndex(position);
             }
 
@@ -163,10 +222,34 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
         if (null == mPlantTypeAdapter) {
             mPlantTypeAdapter = new BaseSpinnerAdapter(getContext(), plantTypes);
         }
-        plantTypes.add(new Info("方案1", "00000000001"));
-        plantTypes.add(new Info("方案2", "00000000002"));
-        plantTypes.add(new Info("方案3", "00000000003"));
-        plantTypes.add(new Info("方案4", "00000000004"));
+
+
+//        GCFAApi.getZpfaList(mAreaId,mCropId,new TextHttpResponseHandler(){
+//
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+//
+//                Log.e("resp:",""+responseString);
+//                Zpfa zpfaList = new Gson().fromJson(responseString, Zpfa.class);
+//
+//                for(int i=0;i<zpfaList.getResponse().getZpfaList().size();i++){
+//                    plantTypes.add(new Info(zpfaList.getResponse()
+//                            .getZpfaList().get(i).getZpfaName()
+//                            , zpfaList.getResponse()
+//                            .getZpfaList().get(i).getZpfaID()));
+//                }
+//            }
+//        });
+
+        plantTypes.add(new Info("请选择栽培方案", ""));
+//        plantTypes.add(new Info("方案2", "00000000002"));
+//        plantTypes.add(new Info("方案3", "00000000003"));
+//        plantTypes.add(new Info("方案4", "00000000004"));
         // 因为SpinnerAdapter内部保存的是和plantTypes
         // 一样的对象,所以要修改SpinnerAdapter中的数据
         // 只要修改plantTypes即可
@@ -189,12 +272,19 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
 
     private void launchInfoActivity(String type) {
 
+        if(mGZFAName==null || "".equals(mGZFAName)){
+            return;
+        }
+
         Intent intent = new Intent();
         intent.putExtra("TYPE", type);
         intent.putExtra("ZpfaID", mZpfaId);
         intent.putExtra("AreaID", mAreaId);
         intent.putExtra("CropID", mCropId);
         intent.putExtra("BLocation", mLocation);
+        intent.putExtra("mGZFAName", mGZFAName);
+
+
 
         if (type.equals("模式图")) {
             intent.setClass(getActivity(), PatternActivity.class);
@@ -208,11 +298,11 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
             return;
         }
 
-        if (type.equals("病虫草防治")) {
-            intent.setClass(getActivity(), PestControlActivity.class);
-            startActivity(intent);
-            return;
-        }
+//        if (type.equals("病虫草防治")) {
+//            intent.setClass(getActivity(), PestControlActivity.class);
+//            startActivity(intent);
+//            return;
+//        }
 
         if (type.equals("农事操作")) {
             intent.setClass(getActivity(), FarmingOprationActivity.class);
@@ -220,11 +310,13 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
             return;
         }
 
-        intent.setClass(getActivity(), VarietyActivity.class);
+//        intent.setClass(getActivity(), VarietyActivity.class);
         intent.putExtra("TYPE", type);
         intent.putExtra("ZpfaID", mZpfaId);
         intent.putExtra("AreaID", mAreaId);
         intent.putExtra("CropID", mCropId);
         startActivity(intent);
     }
+
+
 }

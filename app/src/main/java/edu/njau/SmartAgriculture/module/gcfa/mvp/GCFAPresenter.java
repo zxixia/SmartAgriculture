@@ -29,8 +29,8 @@ public class GCFAPresenter implements GCFAContract.GCFAPresenter {
         mMainItems.add(new MainItem("模式图", R.mipmap.ic_main_jinquesheji));
         mMainItems.add(new MainItem("生育时期", R.mipmap.ic_main_jinquesheji));
         mMainItems.add(new MainItem("农事操作", R.mipmap.ic_main_jinqueyuce));
-        mMainItems.add(new MainItem("病虫草防治", R.mipmap.ic_main_jinquezhengduan));
-        mMainItems.add(new MainItem("品种类型", R.mipmap.ic_main_jichunongqing));
+//        mMainItems.add(new MainItem("病虫草防治", R.mipmap.ic_main_jinquezhengduan));
+//        mMainItems.add(new MainItem("品种类型", R.mipmap.ic_main_jichunongqing));
         /**
          * 调用BaseListView中的函数将数据
          * 刷新到界面上

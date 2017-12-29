@@ -15,6 +15,7 @@ import butterknife.OnClick;
 import edu.njau.SmartAgriculture.R;
 import edu.njau.SmartAgriculture.base.adapter.BaseSpinnerAdapter;
 import edu.njau.SmartAgriculture.bean.gcfa.allinfo.AllInfo;
+import edu.njau.SmartAgriculture.bean.gcfa.variety.Variety;
 import edu.njau.SmartAgriculture.module.gcfa.mvp.FarmingOperationContract;
 import edu.njau.SmartAgriculture.module.gcfa.mvp.FarmingOperationPresenter;
 
@@ -303,7 +304,7 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
     public void onGetCommonTopInfoFromMonthAndMonthPeriod(AllInfo allInfo) {
         super.onGetCommonTopInfoFromMonthAndMonthPeriod(allInfo);
         if (allInfo.getResponse().getHighplantlist().size() > 0) {
-            setCurrentTypeValue(allInfo.getResponse().getHighplantlist().get(0).getFarmingoperation().getFarmingoperationtype());
+            setCurrentTypeValue(allInfo.getResponse().getHighplantlist().get(0).getCropperiod());
         } else {
             setCurrentTypeValue("无数据");
         }
@@ -363,5 +364,10 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
         showSwipe();
         mPresenter.getAllInfoFromMonthAndMonthPeriod(getZpfaId(), getCropId(), getAreaId(),
                 mMonthList.get(mSpinnerAdapter.getSelectIndex()).getShowText(), getMonthPeriod());
+    }
+
+    @Override
+    public void onGetSuitableCrop(Variety variety) {
+        super.onGetSuitableCrop(variety);
     }
 }

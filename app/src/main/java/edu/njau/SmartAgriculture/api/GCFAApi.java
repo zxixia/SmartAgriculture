@@ -19,8 +19,9 @@ public class GCFAApi extends ApiBase {
     public static final String VarietyYield = "varietyYield.do";
     public static final String FarmingOperation = "farmingOperation.do";
     public static final String FindHighplantByCropPeriod = "findHighplantByCropPeriod.do";
-    public static final String FindHighplantByMonthPeriod = "findHighplantByMonthPeriod.do";
+    public static final String FindZpfaList = "zpfaList.do";
 
+    public static final String FindHighplantByMonthPeriod = "findHighplantByMonthPeriod.do";
     /**
      * http://47.93.227.232:8086/zhny/app/pestControl.do?ZpfaID=00000000001&AreaID=0000000001&CropID=0
      * @param handler
@@ -107,5 +108,21 @@ public class GCFAApi extends ApiBase {
             getMonthPeriod(params, monthPeriod);
             mClient.get(getStr, params, handler);
         } catch (Exception e){}
+    }
+
+    /**
+     * http://47.93.227.232:8086//zhny/app/zpfaList.do?AreaID=0000000001&CropID=0
+     */
+    public static void getZpfaList(String area,String crop,TextHttpResponseHandler handler){
+        try{
+
+            RequestParams params = new RequestParams();
+            getCropID(params, crop);
+            getAreaID(params, area);
+
+            final String getStr = getApi(FindZpfaList);
+            XLog.d(true, 5, getStr);
+            mClient.get(getStr, params, handler);
+        }catch (Exception e){e.printStackTrace();}
     }
 }

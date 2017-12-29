@@ -16,6 +16,7 @@ import edu.njau.SmartAgriculture.base.adapter.BaseSpinnerAdapter;
 import edu.njau.SmartAgriculture.bean.gcfa.allinfo.AllInfo;
 import edu.njau.SmartAgriculture.bean.gcfa.period.Period;
 import edu.njau.SmartAgriculture.bean.gcfa.period.Periodlist;
+import edu.njau.SmartAgriculture.bean.gcfa.variety.Variety;
 import edu.njau.SmartAgriculture.module.gcfa.mvp.PeriodContract;
 import edu.njau.SmartAgriculture.module.gcfa.mvp.PeriodPresenter;
 
@@ -301,5 +302,10 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
         } else {
             setCurrentTypeValue("无数据");
         }
+    }
+
+    @Override
+    public void onGetSuitableCrop(Variety variety) {
+        super.onGetSuitableCrop(variety);
     }
 }
