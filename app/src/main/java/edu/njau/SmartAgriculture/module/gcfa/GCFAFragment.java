@@ -188,6 +188,12 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
         intent.putExtra("AreaID", mAreaId);
         intent.putExtra("CropID", mCropId);
 
+        if (type.equals("模式图")) {
+            intent.setClass(getActivity(), PatternActivity.class);
+            startActivity(intent);
+            return;
+        }
+
         if (type.equals("生育时期")) {
             intent.setClass(getActivity(), PeriodActivity.class);
             startActivity(intent);

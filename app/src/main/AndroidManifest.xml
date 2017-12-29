@@ -75,6 +75,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/App.Theme.FullScreen">
         </activity>
+        <activity android:name=".module.gcfa.PatternActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen">
+        </activity>
         <activity android:name=".module.gcfa.PeriodActivity"
             android:screenOrientation="portrait"
             android:theme="@style/App.Theme.FullScreen">
@@ -91,7 +95,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/App.Theme.FullScreen"></activity>
         <service android:name="com.amap.api.location.APSService"></service>
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="3933b222ae423663a8065f0c05b9ae62"></meta-data>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="b6c46c86ac63f5dfa3db09494fc3d8ca"></meta-data>
     </application>
 
 </manifest>

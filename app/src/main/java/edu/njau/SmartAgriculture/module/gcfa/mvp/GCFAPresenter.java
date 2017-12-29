@@ -26,7 +26,7 @@ public class GCFAPresenter implements GCFAContract.GCFAPresenter {
         if (mHasGenerateMainItems) return;
         // 生产菜单
         mMainItems = new ArrayList<>();
-        mMainItems.add(new MainItem("栽培简介", R.mipmap.ic_main_jinquesheji));
+        mMainItems.add(new MainItem("模式图", R.mipmap.ic_main_jinquesheji));
         mMainItems.add(new MainItem("生育时期", R.mipmap.ic_main_jinquesheji));
         mMainItems.add(new MainItem("农事操作", R.mipmap.ic_main_jinqueyuce));
         mMainItems.add(new MainItem("病虫草防治", R.mipmap.ic_main_jinquezhengduan));
