@@ -13,6 +13,8 @@ import java.io.Serializable;
 public class Highplantlist implements Serializable {
 
     private int id;
+    @SerializedName("cropPeriodDay")
+    private String cropPeriodDay;
     @SerializedName("zpfaID")
     private String zpfaid;
     @SerializedName("zpfaName")
@@ -181,4 +183,11 @@ public class Highplantlist implements Serializable {
          return description;
      }
 
+    public String getCropPeriodDay() {
+        return cropPeriodDay;
+    }
+
+    public void setCropPeriodDay(String cropPeriodDay) {
+        this.cropPeriodDay = cropPeriodDay;
+    }
 }

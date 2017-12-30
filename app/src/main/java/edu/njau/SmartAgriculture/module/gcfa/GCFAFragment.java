@@ -48,11 +48,11 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
     private BaseSpinnerAdapter mCropTypeAdapter;
     private BaseSpinnerAdapter mPlantTypeAdapter;
 
-    private String mCropId;
-    private String mZpfaId;
+    private String mCropId = "0";
+    private String mZpfaId = "00000000001";
     private String mAreaId = "0000000001";
-    private String mLocation ;
-    private String mGZFAName ;
+    private String mLocation ="nanjin";
+    private String mGZFAName = "" ;
 
     @Bind(R.id.tv_gcfa_district)
     TextView mDistrict;

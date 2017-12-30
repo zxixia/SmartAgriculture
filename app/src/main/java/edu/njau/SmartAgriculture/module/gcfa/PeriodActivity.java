@@ -46,6 +46,10 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
     //时间
     @Bind(R.id.tv_gcfa_period_month_time)
     TextView mPeriodMonthTime;
+    //日期
+    @Bind(R.id.tv_gcfa_period_date_time)
+    TextView mPeriodDateTime;
+
 
 
     @Override
@@ -87,6 +91,7 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
 
             if (allInfo.getResponse().getHighplantlist().size() > 0) {
 
+                String mPeriodDateTime_Str = "";
                 String mFarmingOperation_Str = "";
                 String mFarmingOperationDescription_Str = "";
                 String mPestControl_Str = "";
@@ -95,6 +100,7 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
                 String mStemGrowth_Str = "";
                 String mPeriodMonthTime_Str = "";
 
+                List<String> mPeriodDateTime_List = new ArrayList<String>();
                 List<String> mFarmingOperation_List = new ArrayList<String>();
                 List<String> mFarmingOperationDescription_List = new ArrayList<String>();
                 List<String> mPestControl_List = new ArrayList<String>();
@@ -105,6 +111,10 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
 
                 for(int i=0;i<allInfo.getResponse().getHighplantlist().size();i++){
 
+
+                    String mPeriodDateTime_Txt =
+                            allInfo.getResponse().getHighplantlist().
+                                    get(i).getCropPeriodDay();
                     String mFarmingOperation_Txt =
                             allInfo.getResponse().getHighplantlist().
                             get(i).getFarmingoperation()
@@ -133,6 +143,10 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
                             .get(i).getCropmonth()
                             +allInfo.getResponse().getHighplantlist()
                             .get(i).getMonthperiod();
+
+                    if(!mPeriodDateTime_List.contains(mPeriodDateTime_Txt)){
+                        mPeriodDateTime_List.add(mPeriodDateTime_Txt);
+                    }
 
                     if(!mFarmingOperation_List.contains(mFarmingOperation_Txt)){
                         mFarmingOperation_List.add(mFarmingOperation_Txt);
@@ -194,6 +208,11 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
 
                 }
 
+                for(int i=0;i<mPeriodDateTime_List.size();i++){
+                    mPeriodDateTime_Str = mPeriodDateTime_Str
+                            +mPeriodDateTime_List.get(i)+"  ";
+                }
+
                 for(int i=0;i<mFarmingOperation_List.size();i++){
                     mFarmingOperation_Str = mFarmingOperation_Str
                             +mFarmingOperation_List.get(i)+"  ";
@@ -230,7 +249,7 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
                 }
 
 
-
+                mPeriodDateTime.setText(mPeriodDateTime_Str);
                 mFarmingOperation.setText(mFarmingOperation_Str);
                 mFarmingOperationDescription.setText(mFarmingOperationDescription_Str);
                 mPestControl.setText(mPestControl_Str);
@@ -241,6 +260,7 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
                 mPeriodMonthTime.setText(mPeriodMonthTime_Str);
 
             } else {
+                mPeriodDateTime.setText("无数据");
                 mPestControl.setText("无数据");
                 mPestControlDescription.setText("无数据");
                 mFarmingOperation.setText("无数据");

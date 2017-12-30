@@ -17,6 +17,7 @@ import edu.njau.SmartAgriculture.base.adapter.BaseSpinnerAdapter;
 import edu.njau.SmartAgriculture.bean.gcfa.allinfo.AllInfo;
 import edu.njau.SmartAgriculture.bean.gcfa.variety.Variety;
 import edu.njau.SmartAgriculture.module.gcfa.mvp.CommonTopInfoContract;
+import edu.njau.SmartAgriculture.module.gcfa.mvp.PeriodContract;
 
 /**
  * Created by zhaoxin5 on 2017/12/26.
@@ -53,9 +54,10 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
     private String mCropId;
     private String mZpfaId;
     private String mAreaId;
-    private String mBLocation;
+    private String mBLocation = "";
     private String mPageTitle;
-    private String mGZFAName;
+    private String mGZFAName = "";
+    CommonTopInfoContract.Presenter mPresenter;
 
     @Override
     protected int getChildContentViewId() {

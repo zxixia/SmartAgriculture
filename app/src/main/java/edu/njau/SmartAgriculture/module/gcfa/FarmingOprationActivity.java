@@ -56,6 +56,11 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
     @Bind(R.id.tv_gcfa_op_cropperiod)
     TextView mCropPeriod;
 
+    @Bind(R.id.tv_gcfa_op_date_time)
+    TextView mPeriodDateTime;
+
+
+
     @Override
     protected int getSubViewId() {
         return R.layout.activity_gcfa_farming_operation;
@@ -78,6 +83,7 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
         try{
             if (allInfo.getResponse().getHighplantlist().size() > 0) {
 
+                String mPeriodDateTime_Str = "";
                 String mFarmingOperation_Str = "";
                 String mFarmingOperationDescription_Str = "";
                 String mPestControl_Str = "";
@@ -87,7 +93,7 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
                 String mPeriodMonthTime_Str = "";
                 String mCropPeriod_Str = "";
 
-
+                List<String> mPeriodDateTime_List = new ArrayList<String>();
                 List<String> mCropPeriod_List = new ArrayList<String>();
                 List<String> mFarmingOperation_List = new ArrayList<String>();
                 List<String> mFarmingOperationDescription_List = new ArrayList<String>();
@@ -99,6 +105,9 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
 
                 for(int i=0;i<allInfo.getResponse().getHighplantlist().size();i++){
 
+                    String mPeriodDateTime_Txt =
+                            allInfo.getResponse().getHighplantlist().
+                                    get(i).getCropPeriodDay();
                     String mCropPeriod_Txt =
                             allInfo.getResponse().getHighplantlist().
                                     get(i).getCropperiod();
@@ -132,6 +141,9 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
                                     +allInfo.getResponse().getHighplantlist()
                                     .get(i).getMonthperiod();
 
+                    if(!mPeriodDateTime_List.contains(mPeriodDateTime_Txt)){
+                        mPeriodDateTime_List.add(mPeriodDateTime_Txt);
+                    }
                     if(!mCropPeriod_List.contains(mCropPeriod_Txt)){
                         mCropPeriod_List.add(mCropPeriod_Txt);
                     }
@@ -196,6 +208,11 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
 
                 }
 
+                for(int i=0;i<mPeriodDateTime_List.size();i++){
+                    mPeriodDateTime_Str = mPeriodDateTime_Str
+                            +mPeriodDateTime_List.get(i)+"  ";
+                }
+
                 for(int i=0;i<mCropPeriod_List.size();i++){
                     mCropPeriod_Str = mCropPeriod_Str
                             +mCropPeriod_List.get(i)+"  ";
@@ -237,7 +254,7 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
                             +mPeriodMonthTime_List.get(i)+"  ";
                 }
 
-
+                mPeriodDateTime.setText(mPeriodDateTime_Str);
                 mCropPeriod.setText(mCropPeriod_Str);
                 mFarmingOperation.setText(mFarmingOperation_Str);
                 mFarmingOperationDescription.setText(mFarmingOperationDescription_Str);
@@ -249,6 +266,8 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
                 mPeriodMonthTime.setText(mPeriodMonthTime_Str);
 
             } else {
+                mPeriodDateTime.setText("无数据");
+                mCropPeriod.setText("无数据");
                 mPestControl.setText("无数据");
                 mPestControlDescription.setText("无数据");
                 mFarmingOperation.setText("无数据");
