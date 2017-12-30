@@ -48,6 +48,7 @@ public class MessageActivity extends BaseTitleNormalActivity implements MessageC
     @Override
     protected void initWidget() {
         super.initWidget();
+        setTitle("信息详情");
         new MessagePresenter(this);
         Intent intent = getIntent();
         mMessageId = intent.getStringExtra("MessageId");
