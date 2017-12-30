@@ -22,6 +22,7 @@ import edu.njau.SmartAgriculture.base.activities.BaseTitleNormalActivity;
 import edu.njau.SmartAgriculture.base.adapter.BaseGeneralRecyclerAdapter;
 import edu.njau.SmartAgriculture.base.adapter.BaseRecyclerAdapter;
 import edu.njau.SmartAgriculture.bean.my.commoninfo.Mqtthistorylist;
+import edu.njau.SmartAgriculture.module.gcfa.PeriodActivity;
 import edu.njau.SmartAgriculture.module.my.adapter.MessageListAdapter;
 import edu.njau.SmartAgriculture.module.my.mvp.MessageListContract;
 import edu.njau.SmartAgriculture.module.my.mvp.MessageListPresenter;
@@ -31,7 +32,7 @@ import edu.njau.SmartAgriculture.module.my.mvp.MessageListPresenter;
  */
 
 public class MessageListActivity extends BaseTitleNormalActivity implements MessageListContract.View,
-        BaseGeneralRecyclerAdapter.Callback {
+        BaseGeneralRecyclerAdapter.Callback, BaseRecyclerAdapter.OnItemClickListener {
 
     @Bind(R.id.rl_root)
     LinearLayout mRoot;
@@ -101,6 +102,7 @@ public class MessageListActivity extends BaseTitleNormalActivity implements Mess
     protected void initData() {
         super.initData();
         mMessageListAdapter = new MessageListAdapter(this);
+        mMessageListAdapter.setOnItemClickListener(this);
         mMessageListView.setAdapter(mMessageListAdapter);
     }
 
@@ -133,5 +135,14 @@ public class MessageListActivity extends BaseTitleNormalActivity implements Mess
                 finish();
             }
         };
+    }
+
+    @Override
+    public void onItemClick(int position, long itemId) {
+        Mqtthistorylist mqtthistorylist = mMessageListAdapter.getItem(position);
+        Intent intent = new Intent();
+        intent.putExtra("MessageId", mqtthistorylist.getMessageid());
+        intent.setClass(this, MessageActivity.class);
+        startActivity(intent);
     }
 }

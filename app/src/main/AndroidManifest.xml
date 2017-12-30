@@ -94,6 +94,9 @@
         <activity android:name=".module.my.MessageListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/App.Theme.FullScreen"></activity>
+        <activity android:name=".module.my.MessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.FullScreen"></activity>
         <service android:name="com.amap.api.location.APSService"></service>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="b6c46c86ac63f5dfa3db09494fc3d8ca"></meta-data>
 

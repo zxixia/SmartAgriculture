@@ -75,4 +75,8 @@ public class ApiBase {
     protected static final void getTopic(RequestParams params, String value) {
         params.put("Topic", value);
     }
+
+    protected static final void getMessageID(RequestParams params, String value) {
+        params.put("MessageID", value);
+    }
 }

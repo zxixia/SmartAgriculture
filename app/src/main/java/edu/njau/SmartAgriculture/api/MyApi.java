@@ -14,6 +14,7 @@ public class MyApi extends ApiBase {
     private static AsyncHttpClient mClient = new AsyncHttpClient();
     private static final String FindMqttHistoryByZpfaID = "findMqttHistoryByZpfaID.do";
     private static final String FindMqttHistoryByTopic = "findMqttHistoryByTopic.do";
+    private static final String FindMqttHistoryByMessageID = "findMqttHistoryByMessageID.do";
 
     /**
      * http://47.93.227.232:8086/zhny/app/findMqttHistoryByZpfaID.do?ZpfaID=00000000001
@@ -44,6 +45,22 @@ public class MyApi extends ApiBase {
             getTopic(params, topic);
             mClient.get(getStr, params, handler);
         } catch (Exception e){
+            XLog.d(true, 5, e.toString());
+        }
+    }
+
+    /**
+     * http://47.93.227.232:8086/zhny/app/findMqttHistoryByMessageID.do?MessageID=1514458046937
+     * @param id
+     * @param handler
+     */
+    public static void getMessageById(String id, TextHttpResponseHandler handler) {
+        try {
+            final String getStr = getApi(FindMqttHistoryByMessageID);
+            RequestParams params = new RequestParams();
+            getMessageID(params, id);
+            mClient.get(getStr, params, handler);
+        } catch (Exception e) {
             XLog.d(true, 5, e.toString());
         }
     }
