@@ -44,7 +44,8 @@ public class MessageReceiveService extends Service {
 //            "period7","period8","period9"
 //    };
     private String[] topics_array = {
-            "NJTest"
+            "GCFA_TOPIC1","GCFA_TOPIC12","GCFA_TOPIC13"
+            ,"GCFA_TOPIC4"
     };
 
     public static final String ACTION = "edu.njau.SmartAgriculture.service.MyService";
@@ -78,10 +79,10 @@ public class MessageReceiveService extends Service {
 
                 } else if(msg.what == 2) {
                     try {
-                        //String apptopics = zhny.getString("apptopics", "NJTest");
+                        String apptopics = zhny.getString("apptopics", "GCFA_TOPIC1");
 
                         //Log.e("apptopics",""+apptopics);
-                        String apptopics = "NJTest";
+//                        String apptopics = "GCFA_TOPIC1";
                         try{
                             client.subscribe(apptopics);
                         }catch(Exception e){
@@ -216,7 +217,7 @@ public class MessageReceiveService extends Service {
         try{
             if(client.isConnected()){
                 client.unsubscribe(topics_array);
-                String apptopics = zhny.getString("apptopics", "NULL");
+                String apptopics = zhny.getString("apptopics", "GCFA_TOPIC1");
                 Log.e("apptopics",""+apptopics);
                 client.subscribe(apptopics);
 

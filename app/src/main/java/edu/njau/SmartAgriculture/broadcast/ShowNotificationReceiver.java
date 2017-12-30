@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.util.Log;
 
 public class ShowNotificationReceiver extends BroadcastReceiver {
 
+    private SharedPreferences zhny;
     public static int message_id = 0;
     private static final String TAG = "RepeatReceiver";
     @Override
@@ -25,11 +27,80 @@ public class ShowNotificationReceiver extends BroadcastReceiver {
         String contentf = "";
         String machinetitle = "";
         String time = "";
+
+        /**
+         * 1514640173294
+         * #五月
+         * #下旬
+         * #00000000001
+         * #江苏沿江太湖亚区单季稻机插亩产
+         * 700公斤高产创建技术规范模式图
+         * #0
+         * #播种
+         * #机械栽插
+         * #机械栽插，行株距9寸×3.5寸，每亩1.7~1.9万穴，每穴2~3苗，每亩5~6万基本苗
+         * #秧田期
+         * #亩用25%吡蚜酮可湿性粉剂25克或40%
+         * 乐果100克对水40公斤喷雾，防治秧田灰飞虱、稻蓟马、螟虫及水稻条纹叶枯病
+         */
+
+        zhny = context.getApplicationContext().getSharedPreferences("zhny", context.getApplicationContext().MODE_PRIVATE);
+        Log.e("MessageShow............",message);
+
+
+//        messageId+"#"+
+//                hpInfor.getCropMonth()+"#"+
+//                hpInfor.getMonthPeriod()+"#"+
+//                hpInfor.getZpfaID()+"#"+
+//                hpInfor.getZpfaName()+"#"+
+//                hpInfor.getLeafAge()+"#"+
+//                hpInfor.getCropPeriod()+"#"+
+//                hpInfor.getFarmingOperation().getFarmingOperationName()+"#"+
+//                hpInfor.getFarmingOperation().getFarmingOperationContent()+"#"+
+//                hpInfor.getPestControl().getPestControlName()+"#"+
+//                hpInfor.getPestControl().getPestControlContent();
+        /**
+         * 收到的消息推送解析
+         */
+        String MqMessageId = message.split("#")[0];
+        String CropMonth= message.split("#")[1];
+        Log.e("CropMonth.......",""+CropMonth);
+        String MonthPeriod = message.split("#")[2];
+        String ZpfaID = message.split("#")[3];
+        String ZpfaName = message.split("#")[4];
+        String LeafAge= message.split("#")[5];
+        String CropPeriod = message.split("#")[6];
+        String FarmingOperationName = message.split("#")[7];
+        String FarmingOperationContent = message.split("#")[8];
+        String PestControlName= message.split("#")[9];
+        String PestControlContent = message.split("#")[10];
+
+        String showTxt = ""+CropMonth+MonthPeriod+
+                "";
+
+        if(zhny.getBoolean("mPD",false)) {
+            showTxt = showTxt +CropPeriod ;
+        }
+
+        if(zhny.getBoolean("mLF",false)) {
+            showTxt = showTxt +LeafAge ;
+        }
+        if(zhny.getBoolean("mSG",false)) {
+            showTxt = showTxt ;
+        }
+
+        if(zhny.getBoolean("mOP",false)) {
+            showTxt = showTxt + FarmingOperationName+FarmingOperationContent;
+        }
+        if(zhny.getBoolean("mPC",false)) {
+            showTxt = showTxt + PestControlName+PestControlContent;
+        }
+
         try{
-            if(message.length()>16){
-                contentf = message.substring(0,15)+"...";
+            if(showTxt.length()>16){
+                contentf = showTxt.substring(0,15)+"...";
             }else{
-                contentf = message;
+                contentf = showTxt;
             }
 
         }catch(Exception e){
@@ -44,6 +115,8 @@ public class ShowNotificationReceiver extends BroadcastReceiver {
         }
         Intent broadcastIntent = new Intent(context, NotificationReceiver.class);
         broadcastIntent.putExtra("message", message);
+        broadcastIntent.putExtra("MqMessageId", MqMessageId);
+
         PendingIntent pendingIntent = PendingIntent.
                 getBroadcast(context, message_id, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(

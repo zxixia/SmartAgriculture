@@ -43,12 +43,14 @@
                 android:layout_height="wrap_content"
                 android:text="生育期"
                 android:textSize="18sp"
+                android:id="@+id/cb_my_crop_period"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"/>
             <android.support.v7.widget.AppCompatCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="主茎叶龄期"
+                android:id="@+id/cb_my_crop_leafage"
                 android:textSize="18sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"/>
@@ -56,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="农事操作"
+                android:id="@+id/cb_my_crop_op"
                 android:textSize="18sp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"/>
@@ -75,6 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="病虫草防治"
+                    android:id="@+id/cb_my_crop_pc"
                     android:textSize="18sp" />
             </LinearLayout>
         </RelativeLayout>
@@ -166,7 +170,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="通用信息"
+                android:text="历史消息"
                 android:layout_centerVertical="true"
                 android:textSize="20sp"
                 android:layout_marginLeft="40dp"

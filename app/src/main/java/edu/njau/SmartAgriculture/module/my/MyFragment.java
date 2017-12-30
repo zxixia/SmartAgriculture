@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener,Com
     private Intent myintent;
     private SharedPreferences zhny;
     private SharedPreferences.Editor editor;
-    private String mTOPIC = "NJTest";
+    private String mTOPIC = "GCFA_TOPIC1";
 
     @Bind(R.id.rl_my_common_info)
     RelativeLayout mCommonInfo;/* 通用信息 */
@@ -40,6 +41,25 @@ public class MyFragment extends BaseFragment implements View.OnClickListener,Com
 
     @Bind(R.id.sc_zpfa_sub)
     SwitchCompat mZPFASub;/* 栽培方案订阅 */
+
+    /**
+     *
+     */
+    @Bind(R.id.cb_my_crop_pc)
+    CheckBox mPC;/* 病 */
+
+    @Bind(R.id.cb_my_stem_growth)
+    CheckBox mSG;/* 消长*/
+
+    @Bind(R.id.cb_my_crop_op)
+    CheckBox mOP;/* 农事 */
+
+    @Bind(R.id.cb_my_crop_leafage)
+    CheckBox mLF;/* 叶灵 */
+
+    @Bind(R.id.cb_my_crop_period)
+    CheckBox mPD;/* 生育期*/
+
 
     @Override
     protected int getLayoutId() {
@@ -71,7 +91,37 @@ public class MyFragment extends BaseFragment implements View.OnClickListener,Com
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+        if(mPC.isChecked()){
+            editor.putBoolean("mPC",true);
+        }else{
+            editor.putBoolean("mPC",false);
+        }
+
+        if(mSG.isChecked()){
+            editor.putBoolean("mSG",true);
+        }else{
+            editor.putBoolean("mSG",false);
+        }
+
+        if(mOP.isChecked()){
+            editor.putBoolean("mOP",true);
+        }else{
+            editor.putBoolean("mOP",false);
+        }
+        if(mLF.isChecked()){
+            editor.putBoolean("mLF",true);
+        }else{
+            editor.putBoolean("mLF",false);
+        }
+        if(mPD.isChecked()){
+            editor.putBoolean("mPD",true);
+        }else{
+            editor.putBoolean("mPD",false);
+        }
+
+
         if (isChecked) {
+
             if(!isServiceRunning()){
                 getActivity().getApplicationContext().startService(myintent);
                 Log.e("service_1", ServiceRunning());

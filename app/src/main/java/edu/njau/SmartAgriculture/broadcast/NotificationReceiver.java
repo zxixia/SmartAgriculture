@@ -9,6 +9,7 @@ import android.util.Log;
 
 import edu.njau.SmartAgriculture.helper.SystemUtils;
 import edu.njau.SmartAgriculture.module.MainActivity;
+import edu.njau.SmartAgriculture.module.my.MessageActivity;
 
 
 public class NotificationReceiver extends BroadcastReceiver {
@@ -19,6 +20,7 @@ public class NotificationReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
         String message = bundle.getString("message");
+        String MqMessageId = bundle.getString("MqMessageId");
         zhny = context.getApplicationContext().getSharedPreferences("zhny", context.getApplicationContext().MODE_PRIVATE);
         SharedPreferences.Editor editor = zhny.edit();
         editor.putString("message_str",""+message);
@@ -34,7 +36,7 @@ public class NotificationReceiver extends BroadcastReceiver {
              * DetailActivity前，要先启动MainActivity。
              */
             Log.e("NotificationReceiver", "the app process is alive");
-            Intent mainIntent = new Intent(context, MainActivity.class);
+            Intent mainIntent = new Intent(context, MessageActivity.class);
             /*
              * Intent mainIntent = new Intent(context, DivSpaceDataFragment.class);
              * 将MainAtivity的launchMode设置成SingleTask, 或者在下面flag中加上Intent.FLAG_CLEAR_TOP,
@@ -43,6 +45,7 @@ public class NotificationReceiver extends BroadcastReceiver {
              */
             mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mainIntent.putExtra("message", message);
+            mainIntent.putExtra("MessageId", MqMessageId);
             Intent[] intents = {mainIntent};
             context.startActivities(intents);
 
@@ -60,6 +63,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             Bundle args = new Bundle();
             launchIntent.putExtra("launchBundle", args);
             launchIntent.putExtra("message", message);
+            launchIntent.putExtra("MessageId", MqMessageId);
             context.startActivity(launchIntent);
         }
 
