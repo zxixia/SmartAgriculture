@@ -51,10 +51,10 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
 
 
 
-    private String mCropId;
-    private String mZpfaId;
-    private String mAreaId;
-    private String mBLocation = "";
+    private String mCropId = "0";
+    private String mZpfaId = "00000000001";
+    private String mAreaId = "0000000001";
+    private String mBLocation = "nanjin";
     private String mPageTitle;
     private String mGZFAName = "";
     CommonTopInfoContract.Presenter mPresenter;

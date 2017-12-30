@@ -121,7 +121,7 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
                                     .getZpfaList().get(i).getZpfaName();
 
                             if(ZPFAName!=null && !"".equals(ZPFAName)){
-                                plantTypes.add(new Info(ZPFAName.substring(0,ZPFAName.length()-17)
+                                plantTypes.add(new Info(ZPFAName
                                         , zpfaList.getResponse()
                                         .getZpfaList().get(i).getZpfaID()));
                             }
