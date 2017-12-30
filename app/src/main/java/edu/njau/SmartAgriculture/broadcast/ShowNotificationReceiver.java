@@ -83,7 +83,7 @@ public class ShowNotificationReceiver extends BroadcastReceiver {
         }
 
         if(zhny.getBoolean("mLF",false)) {
-            showTxt = showTxt +LeafAge ;
+            showTxt = showTxt +"主茎叶龄:"+LeafAge ;
         }
         if(zhny.getBoolean("mSG",false)) {
             showTxt = showTxt ;
@@ -114,7 +114,7 @@ public class ShowNotificationReceiver extends BroadcastReceiver {
             message_id = 0;
         }
         Intent broadcastIntent = new Intent(context, NotificationReceiver.class);
-        broadcastIntent.putExtra("message", message);
+        broadcastIntent.putExtra("message", contentf);
         broadcastIntent.putExtra("MqMessageId", MqMessageId);
 
         PendingIntent pendingIntent = PendingIntent.

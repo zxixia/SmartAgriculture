@@ -44,7 +44,7 @@ public class NotificationReceiver extends BroadcastReceiver {
              * 如果Task栈不存在MainActivity实例，则在栈顶创建
              */
             mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            mainIntent.putExtra("message", message);
+            mainIntent.putExtra("message_str", message);
             mainIntent.putExtra("MessageId", MqMessageId);
             Intent[] intents = {mainIntent};
             context.startActivities(intents);

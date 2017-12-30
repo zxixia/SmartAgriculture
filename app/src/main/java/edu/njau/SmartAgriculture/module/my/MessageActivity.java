@@ -1,6 +1,7 @@
 package edu.njau.SmartAgriculture.module.my;
 
 import android.content.Intent;
+import android.util.Log;
 import android.widget.TextView;
 
 import net.jiawa.debughelper.XLog;
@@ -22,6 +23,7 @@ import edu.njau.SmartAgriculture.module.my.mvp.MessagePresenter;
 public class MessageActivity extends BaseTitleNormalActivity implements MessageContract.View {
 
     private String mMessageId = "1514458046937";
+    private String mMessageC = "";
     private MessageContract.Presenter mPresenter;
     @Bind(R.id.tv_my_title)
     TextView mTitle;
@@ -52,6 +54,7 @@ public class MessageActivity extends BaseTitleNormalActivity implements MessageC
         new MessagePresenter(this);
         Intent intent = getIntent();
         mMessageId = intent.getStringExtra("MessageId");
+        mMessageC = intent.getStringExtra("message_str");
         if (null != mMessageId) {
             XLog.d(true, 5, "mMessageId: " + mMessageId);
         }
@@ -64,10 +67,26 @@ public class MessageActivity extends BaseTitleNormalActivity implements MessageC
     public void onGetMessage(Message message) {
         refreshComplete();
         try {
-            mTitle.setText(message.getResponse().getMqtthistory().getTopic());
+
+//            String MESSAGESTR = message.getResponse().getMqtthistory().getMessage();
+//            String MqMessageId = MESSAGESTR.split("#")[0];
+//            String CropMonth= MESSAGESTR.split("#")[1];
+//            Log.e("CropMonth.......",""+CropMonth);
+//            String MonthPeriod = MESSAGESTR.split("#")[2];
+//            String ZpfaID = MESSAGESTR.split("#")[3];
+//            String ZpfaName = MESSAGESTR.split("#")[4];
+//            String LeafAge= MESSAGESTR.split("#")[5];
+//            String CropPeriod = MESSAGESTR.split("#")[6];
+//            String FarmingOperationName = MESSAGESTR.split("#")[7];
+//            String FarmingOperationContent = MESSAGESTR.split("#")[8];
+//            String PestControlName= MESSAGESTR.split("#")[9];
+//            String PestControlContent = MESSAGESTR.split("#")[10];
+
+
+            mTitle.setText("收到通知");
             mPushTime.setText(new SimpleDateFormat("yyyy年MM月dd日 hh时mm分").format(
                     new Date(message.getResponse().getMqtthistory().getPushtime())));
-            mContent.setText(message.getResponse().getMqtthistory().getMessage());
+            mContent.setText(mMessageC);
         } catch (Exception e) {}
     }
 
