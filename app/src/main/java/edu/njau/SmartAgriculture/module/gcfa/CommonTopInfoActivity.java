@@ -92,14 +92,17 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
         super.initWidget();
         setIconBack(R.mipmap.btn_back_normal);
 
-        Intent intent = getIntent();
-        mAreaId = intent.getStringExtra("AreaID");
-        mCropId = intent.getStringExtra("CropID");
-        mZpfaId = intent.getStringExtra("ZpfaID");
-        mBLocation = intent.getStringExtra("BLocation");
-        mPageTitle = intent.getStringExtra("TYPE");
-        mGZFAName = intent.getStringExtra("mGZFAName");
-
+        try{
+            Intent intent = getIntent();
+            mAreaId = intent.getStringExtra("AreaID");
+            mCropId = intent.getStringExtra("CropID");
+            mZpfaId = intent.getStringExtra("ZpfaID");
+            mBLocation = intent.getStringExtra("BLocation");
+            mPageTitle = intent.getStringExtra("TYPE");
+            mGZFAName = intent.getStringExtra("mGZFAName");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -213,6 +216,8 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
             mZPFAName.setText(""+mGZFAName);
             mLocation.setText(mBLocation);
             mSuitableCrop.setText(variety.getResponse().getVarietyyield());
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

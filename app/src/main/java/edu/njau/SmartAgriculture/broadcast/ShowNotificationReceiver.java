@@ -114,7 +114,7 @@ public class ShowNotificationReceiver extends BroadcastReceiver {
             message_id = 0;
         }
         Intent broadcastIntent = new Intent(context, NotificationReceiver.class);
-        broadcastIntent.putExtra("message", contentf);
+        broadcastIntent.putExtra("message", showTxt);
         broadcastIntent.putExtra("MqMessageId", MqMessageId);
 
         PendingIntent pendingIntent = PendingIntent.

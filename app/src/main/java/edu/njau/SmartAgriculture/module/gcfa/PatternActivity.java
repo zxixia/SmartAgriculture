@@ -1,6 +1,7 @@
 package edu.njau.SmartAgriculture.module.gcfa;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
@@ -65,6 +66,7 @@ public class PatternActivity extends BaseTitleNormalActivity {
         String URL = "http://47.93.227.232:8086/zpfa/" +
                 mZpfaId + ".html";
 
+        Log.e("URL",""+URL);
         mPattern.loadUrl(URL);
     }
 

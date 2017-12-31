@@ -115,7 +115,9 @@ public class PeriodActivity extends CommonTopInfoActivity implements PeriodContr
                     String mPeriodDateTime_Txt =
                             allInfo.getResponse().getHighplantlist().
                                     get(i).getCropPeriodDay();
-                    String mFarmingOperation_Txt =
+                    String mFarmingOperation_Txt =allInfo.getResponse().getHighplantlist().
+                            get(i).getFarmingoperation()
+                            .getFarmingoperationtype()+":"+
                             allInfo.getResponse().getHighplantlist().
                             get(i).getFarmingoperation()
                             .getFarmingoperationname();

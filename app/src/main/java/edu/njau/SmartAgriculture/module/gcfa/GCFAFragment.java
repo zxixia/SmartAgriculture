@@ -25,7 +25,8 @@ import edu.njau.SmartAgriculture.R;
 import edu.njau.SmartAgriculture.api.GCFAApi;
 import edu.njau.SmartAgriculture.base.adapter.BaseRecyclerAdapter;
 import edu.njau.SmartAgriculture.base.adapter.BaseSpinnerAdapter;
-import edu.njau.SmartAgriculture.bean.gcfa.allinfo.AllInfo;
+import edu.njau.SmartAgriculture.bean.gcfa.arealocation.AreaLocation;
+import edu.njau.SmartAgriculture.bean.gcfa.arealocation.CropArea;
 import edu.njau.SmartAgriculture.bean.gcfa.zpfa.Zpfa;
 import edu.njau.SmartAgriculture.module.amap.AMapHelper;
 import edu.njau.SmartAgriculture.module.SARecyclerFragment;
@@ -50,7 +51,7 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
 
     private String mCropId = "0";
     private String mZpfaId = "00000000001";
-    private String mAreaId = "0000000001";
+    private String mAreaId = null;
     private String mLocation ="nanjin";
     private String mGZFAName = "" ;
 
@@ -111,22 +112,27 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
                     public void onSuccess(int statusCode, Header[] headers, String responseString) {
 
 
-                        plantTypes.clear();
-                        Log.e("resp:",""+responseString);
-                        Zpfa zpfaList = new Gson().fromJson(responseString, Zpfa.class);
+                        try{
+                            plantTypes.clear();
+                            Log.e("resp:",""+responseString);
+                            Zpfa zpfaList = new Gson().fromJson(responseString, Zpfa.class);
 
-                        for(int i=0;i<zpfaList.getResponse().getZpfaList().size();i++){
+                            for(int i=0;i<zpfaList.getResponse().getZpfaList().size();i++){
 
-                            String ZPFAName = zpfaList.getResponse()
-                                    .getZpfaList().get(i).getZpfaName();
+                                String ZPFAName = zpfaList.getResponse()
+                                        .getZpfaList().get(i).getZpfaName();
 
-                            if(ZPFAName!=null && !"".equals(ZPFAName)){
-                                plantTypes.add(new Info(ZPFAName
-                                        , zpfaList.getResponse()
-                                        .getZpfaList().get(i).getZpfaID()));
+                                if(ZPFAName!=null && !"".equals(ZPFAName)){
+                                    plantTypes.add(new Info(ZPFAName
+                                            , zpfaList.getResponse()
+                                            .getZpfaList().get(i).getZpfaID()));
+                                }
+
                             }
-
+                        }catch (Exception e){
+                            e.printStackTrace();
                         }
+
                         mPlantTypeAdapter.notifyDataSetChanged();
                     }
                 });
@@ -157,6 +163,33 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
             public void onGetLocation(AMapLocation aMapLocation) {
 //                mDistrict.setText(aMapLocation.getDistrict());
                 mLocation = aMapLocation.getProvince()+aMapLocation.getCity();
+
+                String regionId = aMapLocation.getAdCode();
+                regionId = regionId.substring(0,regionId.length()-2)+"00";
+                Log.e("regionId",""+regionId);
+                GCFAApi.getAreaLocation(regionId, new TextHttpResponseHandler() {
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        Log.e("httpfail",""+responseString);
+                    }
+
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, String responseString) {
+
+                        try{
+                            CropArea cropArea  = new Gson().fromJson(responseString, CropArea.class);
+
+                            Log.e("areaLocation",""+cropArea.getResponse().getAreaLocation().getAreaID());
+                            mAreaId = cropArea.getResponse().getAreaLocation().getAreaID();
+                            Log.e("AreaId",""+mAreaId);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
                 mDistrict.setText(aMapLocation.getProvince()+"  "
                                   +aMapLocation.getCity());
             }
@@ -246,7 +279,7 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
 //            }
 //        });
 
-        plantTypes.add(new Info("请选择栽培方案", ""));
+        plantTypes.add(new Info("请选择栽培方案", "00000000001"));
 //        plantTypes.add(new Info("方案2", "00000000002"));
 //        plantTypes.add(new Info("方案3", "00000000003"));
 //        plantTypes.add(new Info("方案4", "00000000004"));
@@ -273,6 +306,19 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
     private void launchInfoActivity(String type) {
 
         if(mGZFAName==null || "".equals(mGZFAName)){
+            return;
+        }
+
+
+        if(mZpfaId==null || "".equals(mZpfaId)){
+            return;
+        }
+
+        if(mAreaId==null || "".equals(mAreaId)){
+            return;
+        }
+
+        if(mCropId==null || "".equals(mCropId)){
             return;
         }
 

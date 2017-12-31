@@ -79,4 +79,9 @@ public class ApiBase {
     protected static final void getMessageID(RequestParams params, String value) {
         params.put("MessageID", value);
     }
+
+
+    protected static final void getRegionID(RequestParams params, String value) {
+        params.put("RegionID", value);
+    }
 }

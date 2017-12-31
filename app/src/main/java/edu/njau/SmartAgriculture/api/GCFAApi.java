@@ -1,5 +1,7 @@
 package edu.njau.SmartAgriculture.api;
 
+import android.util.Log;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
@@ -20,7 +22,7 @@ public class GCFAApi extends ApiBase {
     public static final String FarmingOperation = "farmingOperation.do";
     public static final String FindHighplantByCropPeriod = "findHighplantByCropPeriod.do";
     public static final String FindZpfaList = "zpfaList.do";
-
+    public static final String FindAreaLocation = "areaLocation.do";
     public static final String FindHighplantByMonthPeriod = "findHighplantByMonthPeriod.do";
     /**
      * http://47.93.227.232:8086/zhny/app/pestControl.do?ZpfaID=00000000001&AreaID=0000000001&CropID=0
@@ -125,4 +127,21 @@ public class GCFAApi extends ApiBase {
             mClient.get(getStr, params, handler);
         }catch (Exception e){e.printStackTrace();}
     }
+
+
+    public static void getAreaLocation(String regionId,TextHttpResponseHandler handler){
+        try{
+
+            RequestParams params = new RequestParams();
+            getRegionID(params,regionId);
+
+            Log.e("paramsD:",params.toString());
+            final String getStr = getApi(FindAreaLocation);
+            XLog.d(true, 5, getStr);
+            mClient.get(getStr, params, handler);
+        }catch (Exception e){e.printStackTrace();}
+    }
+
+
+
 }

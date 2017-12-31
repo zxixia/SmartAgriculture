@@ -112,7 +112,9 @@ public class FarmingOprationActivity extends CommonTopInfoActivity implements Fa
                             allInfo.getResponse().getHighplantlist().
                                     get(i).getCropperiod();
 
-                    String mFarmingOperation_Txt =
+                    String mFarmingOperation_Txt =allInfo.getResponse().getHighplantlist().
+                            get(i).getFarmingoperation()
+                            .getFarmingoperationtype()+":"+
                             allInfo.getResponse().getHighplantlist().
                                     get(i).getFarmingoperation()
                                     .getFarmingoperationname();
