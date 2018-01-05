@@ -14,7 +14,13 @@
     <color name="white">#FFFFFF</color>
     <color name="green">#24cf5f</color>
 
-    <color name="jiawa_main">@color/green</color>
+    <color name="blue">#1874CD</color>
+
+
+
+    <color name="blue_txt">#009ACD</color>
+
+    <color name="jiawa_main">@color/blue</color>
     <color name="ripple_loading_color">@color/gray_666</color>
 
     <!-- 下拉刷新时，颜色值 -->

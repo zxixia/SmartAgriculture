@@ -1,5 +1,6 @@
 package edu.njau.SmartAgriculture.base.activities;
 
+import android.graphics.Color;
 import android.support.v4.widget.NestedScrollView;
 import android.view.ViewStub;
 
@@ -51,6 +52,7 @@ public abstract class BaseTitleActivity extends BaseActivity implements
         }
         // 隐藏图标
         mTitleBar.setIcon(0);
+        //mTitleBar.setBackgroundColor(Color.parseColor("#1874CD"));
     }
 
     protected abstract

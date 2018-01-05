@@ -50,12 +50,14 @@
                 android:text="时间："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_gcfa_period_month_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="5"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -71,12 +73,14 @@
                 android:text="日期范围："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_gcfa_period_date_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="5"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -92,12 +96,14 @@
                 android:text="主茎叶龄期："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_gcfa_period_leaf_age"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="5"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -114,13 +120,15 @@
                 android:text="茎蘖消长动态："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_gcfa_period_stem_growth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="成熟期亩穗数23-25万"
                 android:textSize="16sp"
+                android:textColor="@color/black"
                 android:layout_weight="5"/>
         </LinearLayout>
 
@@ -137,12 +145,14 @@
                 android:text="农事操作："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_gcfa_period_farming_operation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="灌溉"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -153,6 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <View style="@style/sty_horizontal_line"/>
@@ -168,13 +179,15 @@
                 android:text="病虫草防治："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_gcfa_period_pest_control"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="16sp"
+                android:textColor="@color/black"
                 android:layout_weight="5"/>
         </LinearLayout>
         <TextView
@@ -183,6 +196,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:textColor="@color/black"
             android:textSize="16sp"/>
     </LinearLayout> <!-- 最底部的动态区域 -->
 </LinearLayout> <!-- 生育时期 -->

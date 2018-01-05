@@ -14,6 +14,7 @@
     <color name="amber_a200">#ffd740</color>
     <color name="amber_a400">#ffc400</color>
     <color name="amber_a700">#ffab00</color>
+    <color name="black">#000000</color>
     <color name="black_alpha_112">#70000000</color>
     <color name="black_alpha_128">#80000000</color>
     <color name="black_alpha_144">#90000000</color>

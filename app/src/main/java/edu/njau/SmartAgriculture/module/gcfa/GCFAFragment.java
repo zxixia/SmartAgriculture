@@ -142,12 +142,14 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
             }
         });
 
+
         mSpinnerPlantType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mZpfaId = ((Info)mPlantTypeAdapter.getItem(position)).id;
                 XLog.d(true, 5, "zpfa: " + mZpfaId);
                 mGZFAName = ((Info) mPlantTypeAdapter.getItem(position)).name;
+                Log.e("zpfaName: " , mGZFAName);
                 mPlantTypeAdapter.setSelectIndex(position);
             }
 
@@ -279,7 +281,7 @@ public class GCFAFragment extends SARecyclerFragment<GCFAContract.GCFAPresenter,
 //            }
 //        });
 
-        plantTypes.add(new Info("请选择栽培方案", "00000000001"));
+//        plantTypes.add(new Info("请选择栽培方案", "00000000001"));
 //        plantTypes.add(new Info("方案2", "00000000002"));
 //        plantTypes.add(new Info("方案3", "00000000003"));
 //        plantTypes.add(new Info("方案4", "00000000004"));

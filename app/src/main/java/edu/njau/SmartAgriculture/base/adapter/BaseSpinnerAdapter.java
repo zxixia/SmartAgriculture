@@ -64,6 +64,7 @@ public class BaseSpinnerAdapter extends BaseAdapter {
         } else {
             tv.setTextColor(Color.parseColor("#6baf77"));
         }
+        tv.setBackgroundColor(Color.parseColor("#ffffff"));
         return convertView;
     }
 

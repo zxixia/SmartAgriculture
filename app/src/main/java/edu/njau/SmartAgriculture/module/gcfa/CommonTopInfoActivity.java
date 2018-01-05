@@ -1,6 +1,7 @@
 package edu.njau.SmartAgriculture.module.gcfa;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
@@ -214,6 +215,7 @@ public abstract class CommonTopInfoActivity extends BaseTitleNormalActivity impl
     public void onGetSuitableCrop(Variety variety) {
         try {
             mZPFAName.setText(""+mGZFAName);
+            Log.e("MZPFA:",mGZFAName+"");
             mLocation.setText(mBLocation);
             mSuitableCrop.setText(variety.getResponse().getVarietyyield());
         } catch (Exception e) {

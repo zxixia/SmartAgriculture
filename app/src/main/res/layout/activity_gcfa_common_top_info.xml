@@ -21,13 +21,15 @@
             android:layout_height="wrap_content"
             android:text="当前位置"
             android:textStyle="bold"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/blue_txt"/>
         <TextView
             android:layout_marginTop="5dp"
             android:id="@+id/tv_gcfa_current_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="南京市玄武区"
+            android:textColor="@color/black"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -54,12 +56,14 @@
                 android:text="当前月份："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_middle_current_month_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="五月下旬"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -75,12 +79,14 @@
                 android:text="当前物侯期："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_middle_current_type_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="成熟期"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -95,12 +101,14 @@
                 android:text="当前主茎叶龄："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_leaf_age"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="5"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -116,12 +124,14 @@
                 android:text="茎蘖消长动态："
                 android:textSize="16sp"
                 android:layout_weight="3"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/blue_txt"/>
             <TextView
                 android:id="@+id/tv_stem_growth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="成熟期亩穗数23-25万"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_weight="5"/>
         </LinearLayout>
@@ -141,7 +151,8 @@
             android:text="下里河地区高产方案"
             android:id="@+id/tv_gcfa_current_zpfa_name"
             android:textStyle="bold"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/blue_txt"/>
     </LinearLayout>
 
     <!--
@@ -158,13 +169,15 @@
             android:layout_height="wrap_content"
             android:text="适宜品种及目标产量"
             android:textStyle="bold"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/blue_txt"/>
         <TextView
             android:layout_marginTop="5dp"
             android:id="@+id/tv_gcfa_suitable_crop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="水稻 中稻1号"
+            android:textColor="@color/black"
             android:textSize="16sp"/>
     </LinearLayout>
 
