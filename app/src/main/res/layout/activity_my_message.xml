@@ -40,10 +40,197 @@
         android:padding="5dp"
         android:background="@drawable/dra_rounded_corner_bottom"
         android:layout_marginTop="3dp">
-        <TextView
-            android:id="@+id/tv_my_content"
+        
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="center"
+                    android:id="@+id/tv_my_zpfa_name"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_txt"/>
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="时间："
+                    android:id="@+id/tv_my_time_name"
+                    android:textSize="16sp"
+                    android:layout_weight="2"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_txt"/>
+
+                <TextView
+                    android:id="@+id/tv_my_time_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <!--生育期-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/tv_my_period_name"
+                    android:layout_height="wrap_content"
+                    android:text="生育期："
+                    android:textSize="16sp"
+                    android:layout_weight="2"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_txt"/>
+
+                <TextView
+                    android:id="@+id/tv_my_period_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+            <!--主茎叶龄-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="主茎叶龄："
+                    android:id="@+id/tv_my_zjyl_name"
+                    android:textSize="16sp"
+                    android:layout_weight="2"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_txt"/>
+
+                <TextView
+                    android:id="@+id/tv_my_zjyl_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <!--茎蘖消长动态-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="茎蘖消长动态："
+                    android:textSize="16sp"
+                    android:id="@+id/tv_my_xzdj_name"
+                    android:layout_weight="2"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_txt"/>
+
+                <TextView
+                    android:id="@+id/tv_my_xzdj_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <!--农事操作-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="农事操作："
+                    android:textSize="16sp"
+                    android:id="@+id/tv_my_op_name"
+                    android:layout_weight="2"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_txt"/>
+
+                <TextView
+                    android:id="@+id/tv_my_op_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <!--病虫害防治-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="病虫害防治："
+                    android:textSize="16sp"
+                    android:id="@+id/tv_my_pc_name"
+                    android:layout_weight="2"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_txt"/>
+
+                <TextView
+                    android:id="@+id/tv_my_pc_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        
+
     </FrameLayout>
 </LinearLayout>

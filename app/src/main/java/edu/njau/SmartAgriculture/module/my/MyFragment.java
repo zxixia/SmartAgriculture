@@ -72,6 +72,19 @@ public class MyFragment extends BaseFragment implements View.OnClickListener,Com
         myintent = new Intent(getActivity().getApplicationContext(),MessageReceiveService.class);
         zhny = getActivity().getApplicationContext().getSharedPreferences("zhny", getActivity().getApplicationContext().MODE_PRIVATE);
         editor = zhny.edit();
+        try{
+            //生育期
+
+            mPD.setChecked(zhny.getBoolean("mPD",false));
+            mLF.setChecked(zhny.getBoolean("mLF",false));
+            mSG.setChecked(zhny.getBoolean("mSG",false));
+            mOP.setChecked(zhny.getBoolean("mOP",false));
+            mPC.setChecked(zhny.getBoolean("mPC",false));
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         boolean sub_checked = zhny.getBoolean("sub_check",false);
         mZPFASub.setChecked(sub_checked);
         registerMessageReceiver();

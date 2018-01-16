@@ -74,26 +74,26 @@ public class ShowNotificationReceiver extends BroadcastReceiver {
         String FarmingOperationContent = message.split("#")[8];
         String PestControlName= message.split("#")[9];
         String PestControlContent = message.split("#")[10];
-
-        String showTxt = ""+CropMonth+MonthPeriod+
-                "";
+        String XZDT =  message.split("#")[11];
+        String showTxt = ""+CropMonth+MonthPeriod
+                ;
 
         if(zhny.getBoolean("mPD",false)) {
-            showTxt = showTxt +CropPeriod ;
+            showTxt = showTxt +","+CropPeriod ;
         }
 
         if(zhny.getBoolean("mLF",false)) {
-            showTxt = showTxt +"主茎叶龄:"+LeafAge ;
+            showTxt = showTxt +","+"主茎叶龄 "+LeafAge ;
         }
         if(zhny.getBoolean("mSG",false)) {
-            showTxt = showTxt ;
+            showTxt = showTxt +","+"茎蘖消长动态 "+XZDT;
         }
 
         if(zhny.getBoolean("mOP",false)) {
-            showTxt = showTxt + FarmingOperationName+FarmingOperationContent;
+            showTxt = showTxt +","+ FarmingOperationName+FarmingOperationContent;
         }
         if(zhny.getBoolean("mPC",false)) {
-            showTxt = showTxt + PestControlName+PestControlContent;
+            showTxt = showTxt + ","+PestControlName+PestControlContent;
         }
 
         try{
